@@ -1,0 +1,50 @@
+/* ==========================================================================
+   Import Foundation base styles
+   _foundation.scss
+   ========================================================================== */
+
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+// This includes all of the foundation global elements that are needed to work with any of the other files.
+@import "variables";
+
+// 
+/* Foundation Components (comment out as necessary)
+   ======================================================================== */
+@import
+  "foundation/scss/foundation/components/global",
+  "foundation/scss/foundation/components/grid",
+  "foundation/scss/foundation/components/visibility",
+  "foundation/scss/foundation/components/block-grid",
+  "foundation/scss/foundation/components/type",
+  "foundation/scss/foundation/components/buttons",
+  "foundation/scss/foundation/components/forms",
+  "foundation/scss/foundation/components/button-groups",
+  "foundation/scss/foundation/components/dropdown-buttons",
+  "foundation/scss/foundation/components/split-buttons",
+  "foundation/scss/foundation/components/flex-video",
+  "foundation/scss/foundation/components/section",
+  "foundation/scss/foundation/components/top-bar",
+  "foundation/scss/foundation/components/orbit",
+  "foundation/scss/foundation/components/reveal",
+  "foundation/scss/foundation/components/joyride",
+  "foundation/scss/foundation/components/clearing",
+  "foundation/scss/foundation/components/alert-boxes",
+  "foundation/scss/foundation/components/breadcrumbs",
+  "foundation/scss/foundation/components/custom-forms",
+  "foundation/scss/foundation/components/keystrokes",
+  "foundation/scss/foundation/components/labels",
+  "foundation/scss/foundation/components/inline-lists",
+  "foundation/scss/foundation/components/pagination",
+  "foundation/scss/foundation/components/panels",
+  "foundation/scss/foundation/components/pricing-tables",
+  "foundation/scss/foundation/components/progress-bars",
+  "foundation/scss/foundation/components/side-nav",
+  "foundation/scss/foundation/components/sub-nav",
+  "foundation/scss/foundation/components/switch",
+  "foundation/scss/foundation/components/magellan",
+  "foundation/scss/foundation/components/tables",
+  "foundation/scss/foundation/components/thumbs",
+  "foundation/scss/foundation/components/tooltips",
+  "foundation/scss/foundation/components/dropdown";

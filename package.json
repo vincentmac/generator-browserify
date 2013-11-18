@@ -1,0 +1,46 @@
+{
+  "name": "generator-browserify",
+  "version": "0.0.0",
+  "description": "A generator for Yeoman",
+  "keywords": [
+    "yeoman-generator",
+    "browserify",
+    "foundation",
+    "bootstrap",
+    "commonjs",
+    "cjs"
+  ],
+  "homepage": "https://github.com/vincentmac/generator-browserify",
+  "bugs": "https://github.com/vincentmac/generator-browserify/issues",
+  "author": {
+    "name": "Vincent Mac",
+    "email": "",
+    "url": "https://github.com/vincentmac"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vincentmac/generator-browserify.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.13.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.2.10"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
