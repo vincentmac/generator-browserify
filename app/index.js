@@ -98,23 +98,40 @@ BrowserifyGenerator.prototype.app = function app() {
 };
 
 BrowserifyGenerator.prototype.styles = function styles() {
-  this.mkdir('app/styles');
-  this.mkdir('app/styles/components');
-
   if (this.foundation) {
-    this.mkdir('app/styles/mixins');
-    this.copy('scss/app.scss', 'app/styles/app.scss');
-    this.copy('scss/_foundation.scss', 'app/styles/_foundation.scss');
-    this.copy('scss/_variables.scss', 'app/styles/_variables.scss');
-    this.copy('scss/_base.scss', 'app/styles/components/_base.scss');
+    this.mkdir('app/scss');
+    this.mkdir('app/scss/components');
+    this.mkdir('app/scss/mixins');
+    this.copy('scss/app.scss', 'app/scss/app.scss');
+    this.copy('scss/_foundation.scss', 'app/scss/_foundation.scss');
+    this.copy('scss/_variables.scss', 'app/scss/_variables.scss');
+    this.copy('scss/_base.scss', 'app/scss/components/_base.scss');
   } else if (this.bootstrap) {
-
+    this.mkdir('app/less');
+    this.mkdir('app/less/components');
+    this.mkdir('app/less/mixins');
+    this.copy('less/app.less', 'app/less/app.less');
+    this.copy('less/bootstrap.less', 'app/less/bootstrap.less');
+    this.copy('less/variables.less', 'app/less/variables.less');
+    this.copy('less/base.less', 'app/less/components/base.less');
   }
 
 };
 
-BrowserifyGenerator.prototype.tests = function tests() {
-  // Generate test suite here
+BrowserifyGenerator.prototype.index = function index() {
+  if (this.jade) {
+    if (this.foundation) {
+      this.copy('jade/foundation.jade', 'app/jade/index.jade');
+    } else if (this.bootstrap) {
+      this.copy('jade/bootstrap.jade', 'app/jade/index.jade');
+    }
+  } else {
+    if (this.foundation) {
+      this.copy('html/foundation.html', 'app/index.html');
+    } else if (this.bootstrap) {
+      this.copy('html/bootstrap.html', 'app/index.html');
+    }
+  }
 };
 
 

@@ -22,16 +22,21 @@ module.exports = function(grunt) {
       dist: 'dist',
       vendor: '<%%= bowerrc.directory %>'
     },
+    banner: '/*!\n' +
+            ' * <%%= pkg.name %>-<%%= pkg.version %>\n' +
+            ' * <%%= pkg.author %>\n' +
+            ' * <%%= grunt.template.today("yyyy-mm-dd") %>\n' +
+            ' */\n\n',
     watch: {
       gruntfile: {
         files: ['Gruntfile.js']
       },<% if (foundation) { %>
       compass: {
-        files: ['<%%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        files: ['<%%= yeoman.app %>/scss/{,*/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
       },<% } else if (bootstrap) { %>
       less: {
-        files: ['<%%= yeoman.app %>/styles/{,*/}*.less'],
+        files: ['<%%= yeoman.app %>/less/{,*/}*.less'],
         tasks: ['less:server', 'autoprefixer']
       },<% } %>
       styles: {
@@ -61,8 +66,9 @@ module.exports = function(grunt) {
         options: {
           livereload: '<%%= connect.options.livereload %>'
         },
-        files: [
-          '<%%= yeoman.app %>/*.html',
+        files: [<% if (jade) { %>
+          '<%%= yeoman.app %>/**/*.{html,jade}',<% } else { %>
+          '<%%= yeoman.app %>/**/*.html',<% } %>
           '.tmp/styles/{,*/}*.css',
           '{.tmp,<%%= yeoman.app %>}/scripts/{,*/}*.js',
           '<%%= yeoman.app %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
@@ -137,16 +143,16 @@ module.exports = function(grunt) {
     },<% if (foundation) { %>
     compass: {
       options: {
-        sassDir: '<%%= yeoman.app %>/styles',
+        sassDir: '<%%= yeoman.app %>/scss',
         cssDir: '.tmp/styles',
         generatedImagesDir: '.tmp/images/generated',
         imagesDir: '<%%= yeoman.app %>/images',
         javascriptsDir: '<%%= yeoman.app %>/scripts',
-        fontsDir: '<%%= yeoman.app %>/styles/fonts',
+        fontsDir: '<%%= yeoman.app %>/scss/fonts',
         importPath: '<%%= yeoman.vendor %>',
         httpImagesPath: '/images',
         httpGeneratedImagesPath: '/images/generated',
-        httpFontsPath: '/styles/fonts',
+        httpFontsPath: '/scss/fonts',
         relativeAssets: false,
         assetCacheBuster: false
       },
@@ -159,6 +165,34 @@ module.exports = function(grunt) {
         options: {
           debugInfo: true
         }
+      }
+    },<% } else if (bootstrap) { %>
+    less: {
+      options: {
+        compile: true,
+        banner: '<%%= banner %>'
+      },
+      dev: {
+        src: ['<%%= yeoman.app %>/less/app.less'],
+        dest: '.tmp/styles/app.css'
+      },
+      bootstrap: {
+        src: ['<%%= yeoman.vendor %>/bootstrap/less/bootstrap.less'],
+        dest: '<%%= yeoman.dist %>/styles/bootstrap.css'
+      },
+      'bootstrap-min': {
+        options: {
+          compress: true
+        },
+        src: ['<%%= yeoman.vendor %>/bootstrap/less/bootstrap.less'],
+        dest: '<%%= yeoman.dist %>/styles/bootstrap.min.css'
+      },
+      min: {
+        options: {
+          compress: true
+        },
+        src: ['<%%= yeoman.app %>/less/app.less'],
+        dest: '<%%= yeoman.dist %>/styles/app.min.css'
       }
     },<% } %>
     browserify: {
@@ -255,7 +289,7 @@ module.exports = function(grunt) {
     },
     concat: {
       options: {
-        banner: '/*!\n * <%%= pkg.name %>-<%%= pkg.version %>\n * <%%= pkg.author %>\n * <%%= grunt.template.today("yyyy-mm-dd") %>\n */\n\n'
+        banner: '<%%= banner %>'
       },
       dev: {
         src: ['.tmp/scripts/vendor.js', '.tmp/scripts/main.js'],
@@ -403,7 +437,8 @@ module.exports = function(grunt) {
     }, <% } %>
     concurrent: {
       server: [<% if (foundation) { %>
-        'compass:server',<% } %>
+        'compass:server',<% } else if (bootstrap) { %>
+        'less:dev',<% } %>
         'browserify:dev',
         'browserify:vendor',<% if (jade) { %>
         'jade:dev',<% } %>
@@ -417,7 +452,8 @@ module.exports = function(grunt) {
         'browserify:test'
       ],
       dist: [<% if (foundation) { %>
-        'compass',<% } %>
+        'compass',<% } else if (bootstrap) { %>
+        'less:dist',<% } %>
         'browserify',<% if (jade) { %>
         'jade',<% } %>
         'copy:styles',
