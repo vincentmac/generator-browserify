@@ -63,6 +63,35 @@ BrowserifyGenerator.prototype.askFor = function askFor() {
   }.bind(this));
 };
 
+BrowserifyGenerator.prototype.followUp = function followUp() {
+  var cb = this.async();
+  // If user is using foundation let them choose between using libsass and compass
+  if (this.foundation) {
+
+    var prompts = [{
+      type: 'list',
+      name: 'compiler',
+      message: 'Which Sass compiler do you want to use for Foundation?',
+      choices: ['Libsass', 'Compass'],
+      filter: function(val) { return val.toLowerCase(); }
+    }
+    ];
+
+    this.prompt(prompts, function (props) {
+      function hasFeature(feat) { return props.compiler.indexOf(feat) !== -1; }
+
+      this.compiler = props.compiler;
+      this.libsass = hasFeature('libsass');  // Set boolean for compiler
+      this.compass = hasFeature('compass');  // Set boolean for compiler
+
+      cb();
+    }.bind(this));
+  } else {
+    cb();
+  }
+  
+};
+
 BrowserifyGenerator.prototype.gruntfile = function gruntfile() {
   this.template('Gruntfile.js');
 };

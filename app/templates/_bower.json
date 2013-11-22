@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "dependencies": {<% if (bootstrap) { %>
     "bootstrap": "~3.0.2",<% } if (foundation) { %>
-    "foundation": "~4.3.2",<% } if (modernizr) { %>
-    "modernizr": "~2.6.3",<% } %>
+    "foundation": "~5.0.1",<% } if (modernizr) { %>
+    "modernizr": "~2.7.0",<% } %>
     "jquery": "~2.0.3",
     "lodash": "~2.3.0",
     "backbone": "~1.1.0"

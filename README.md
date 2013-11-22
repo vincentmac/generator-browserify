@@ -1,6 +1,6 @@
 # generator-browserify [![Build Status](https://secure.travis-ci.org/vincentmac/generator-browserify.png?branch=master)](https://travis-ci.org/vincentmac/generator-browserify)
 
-A generator for [Yeoman](http://yeoman.io).
+[Yeoman](http://yeoman.io) generator with [Browserify](http://browserify.org/) and your choice of [Foundation 5](http://foundation.zurb.com/) or [Bootstrap 3](http://getbootstrap.com/)
 
 
 ## Getting Started

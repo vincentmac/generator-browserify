@@ -140,7 +140,7 @@ module.exports = function(grunt) {
           urls: ['http://<%%= connect.test.options.hostname %>:<%%= connect.test.options.port %>/index.html']
         }
       }
-    },<% if (foundation) { %>
+    },<% if (compass) { %>
     compass: {
       options: {
         sassDir: '<%%= yeoman.app %>/scss',
@@ -149,7 +149,7 @@ module.exports = function(grunt) {
         imagesDir: '<%%= yeoman.app %>/images',
         javascriptsDir: '<%%= yeoman.app %>/scripts',
         fontsDir: '<%%= yeoman.app %>/scss/fonts',
-        importPath: '<%%= yeoman.vendor %>',
+        importPath: '<%%= yeoman.vendor %>/foundation/scss',
         httpImagesPath: '/images',
         httpGeneratedImagesPath: '/images/generated',
         httpFontsPath: '/scss/fonts',
@@ -166,7 +166,34 @@ module.exports = function(grunt) {
           debugInfo: true
         }
       }
-    },<% } else if (bootstrap) { %>
+    },<% } %><% if (libsass) { %>
+    sass: {
+      dev: {
+        options: {
+          includePaths: ['<%%= yeoman.app %>/scss', '<%%= yeoman.vendor %>/foundation/scss']
+        },
+        files: {
+          '.tmp/styles/app.css': '<%%= yeoman.app %>/scss/app.scss'
+        }
+      },
+      dist: {
+        options: {
+          includePaths: ['<%%= yeoman.app %>/scss', '<%%= yeoman.vendor %>/foundation/scss']
+        },
+        files: {
+          '<%%= yeoman.dist %>/styles/app.css': '<%%= yeoman.app %>/scss/app.scss'
+        }
+      },
+      'dist-min': {
+        options: {
+          outputStyle:'compressed',
+          includePaths: ['<%%= yeoman.app %>/scss', '<%%= yeoman.vendor %>/foundation/scss']
+        },
+        files: {
+          '<%%= yeoman.dist %>/styles/app.min.css': '<%%= yeoman.app %>/scss/app.scss'
+        }
+      }
+    },<% } %><% if (bootstrap) { %>
     less: {
       options: {
         compile: true,
@@ -436,8 +463,9 @@ module.exports = function(grunt) {
       uglify: true
     }, <% } %>
     concurrent: {
-      server: [<% if (foundation) { %>
-        'compass:server',<% } else if (bootstrap) { %>
+      server: [<% if (compass) { %>
+        'compass:server',<% } else if (libsass) { %>
+        'sass:dev',<% } %><%if (bootstrap) { %>
         'less:dev',<% } %>
         'browserify:dev',
         'browserify:vendor',<% if (jade) { %>
@@ -451,8 +479,9 @@ module.exports = function(grunt) {
         'browserify:dev',
         'browserify:test'
       ],
-      dist: [<% if (foundation) { %>
-        'compass',<% } else if (bootstrap) { %>
+      dist: [<% if (compass) { %>
+        'compass',<% } else if (libsass) { %>
+        'sass:dist',<% } %><%if (bootstrap) { %>
         'less:dist',<% } %>
         'browserify',<% if (jade) { %>
         'jade',<% } %>
