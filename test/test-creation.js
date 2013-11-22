@@ -27,9 +27,12 @@ describe('browserify generator', function () {
         ];
 
         helpers.mockPrompt(this.app, {
-            'framework': 'foundation',
+            'framework': ['foundation'],
+            'compiler': ['libsass'],
+            'foundation': true,
             'modernizr': true,
-            'jade': true
+            'jade': true,
+            'libsass': true
         });
         this.app.options['skip-install'] = true;
         this.app.run({}, function () {
