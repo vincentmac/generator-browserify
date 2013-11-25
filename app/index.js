@@ -126,6 +126,10 @@ BrowserifyGenerator.prototype.app = function app() {
   this.mkdir('app/images');
   if (this.jade) this.mkdir('app/jade');
 
+  this.copy('main.js', 'app/scripts/main.js');
+  this.copy('app.js', 'app/scripts/app.js');
+
+
 };
 
 BrowserifyGenerator.prototype.styles = function styles() {

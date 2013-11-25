@@ -13,7 +13,8 @@ html(lang='en')
     // Bootstrap theme
     //- link(href='../../dist/css/bootstrap-theme.min.css', rel='stylesheet')
     // Custom styles for this template
-    link(href='/styles/app.css', rel='stylesheet')
+    link(rel='stylesheet', href='styles/app.css')
+    script(src='bower_components/modernizr/modernizr.js')
     // Just for debugging purposes. Don't actually copy this line!
     //if lt IE 9
       // script(src='../../docs-assets/js/ie8-responsive-file-warning.js')
@@ -310,9 +311,9 @@ html(lang='en')
           | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.
 
 
-    // Bootstrap core JavaScript
+    // Scripts
     // ================================================== 
     // Placed at the end of the document so the pages load faster
-    script(src='https://code.jquery.com/jquery-1.10.2.min.js')
-    script(src='../../dist/js/bootstrap.min.js')
-    script(src='../../docs-assets/js/holder.js')
+    // script(src='scripts/app.js')
+    script(src='scripts/vendor.js')
+    script(src='scripts/main.js')
