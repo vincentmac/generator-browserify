@@ -1,6 +1,6 @@
 {
   "name": "generator-browserify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Yeoman generator with Browserify and your choice of Foundation 5 or Bootstrap 3",
   "keywords": [
     "yeoman-generator",
