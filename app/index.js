@@ -87,6 +87,8 @@ BrowserifyGenerator.prototype.followUp = function followUp() {
       cb();
     }.bind(this));
   } else {
+    this.libsass = false;
+    this.compass = false;
     cb();
   }
   
