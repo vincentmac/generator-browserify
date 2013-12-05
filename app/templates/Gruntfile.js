@@ -34,7 +34,7 @@ module.exports = function(grunt) {
       compass: {
         files: ['<%%= yeoman.app %>/scss/{,*/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
-      },<% else if (libsass) { %>
+      },<% } if (libsass) { %>
       sass: {
         files: ['<%%= yeoman.app %>/scss/{,*/}*.{scss,sass}'],
         tasks: ['sass:dev', 'autoprefixer']

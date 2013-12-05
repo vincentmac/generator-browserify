@@ -95,7 +95,7 @@ BrowserifyGenerator.prototype.followUp = function followUp() {
 };
 
 BrowserifyGenerator.prototype.gruntfile = function gruntfile() {
-  this.template('Gruntfile.js');
+  this.template('Gruntfile.js', 'Gruntfile.js');
 };
 
 BrowserifyGenerator.prototype.packageJSON = function packageJSON() {

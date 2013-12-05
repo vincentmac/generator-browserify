@@ -1,6 +1,6 @@
 {
   "name": "generator-browserify",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Yeoman generator with Browserify and your choice of Foundation 5 or Bootstrap 3",
   "keywords": [
     "yeoman-generator",
@@ -33,7 +33,7 @@
     "test": "mocha --reporter spec"
   },
   "dependencies": {
-    "yeoman-generator": "~0.13.0"
+    "yeoman-generator": "~0.14.0"
   },
   "devDependencies": {
     "mocha": "~1.14.0"
