@@ -30,11 +30,15 @@ module.exports = function(grunt) {
     watch: {
       gruntfile: {
         files: ['Gruntfile.js']
-      },<% if (foundation) { %>
+      },<% if (compass) { %>
       compass: {
         files: ['<%%= yeoman.app %>/scss/{,*/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
-      },<% } else if (bootstrap) { %>
+      },<% else if (libsass) { %>
+      sass: {
+        files: ['<%%= yeoman.app %>/scss/{,*/}*.{scss,sass}'],
+        tasks: ['sass:dev', 'autoprefixer']
+      },<% } if (bootstrap) { %>
       less: {
         files: ['<%%= yeoman.app %>/less/{,*/}*.less'],
         tasks: ['less:server', 'autoprefixer']
