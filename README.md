@@ -1,4 +1,4 @@
-# generator-browserify [![Build Status](https://secure.travis-ci.org/vincentmac/generator-browserify.png?branch=master)](https://travis-ci.org/vincentmac/generator-browserify)
+# generator-browserify [![Build Status](https://secure.travis-ci.org/vincentmac/generator-browserify.png?branch=master)](https://travis-ci.org/vincentmac/generator-browserify) [![NPM version](https://badge.fury.io/js/generator-browserify.png)](http://badge.fury.io/js/generator-browserify)
 
 [Yeoman](http://yeoman.io) generator with [Browserify](http://browserify.org/) and your choice of [Foundation 5](http://foundation.zurb.com/) or [Bootstrap 3](http://getbootstrap.com/)
 
