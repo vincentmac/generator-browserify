@@ -7,11 +7,11 @@
 
 'use strict';
 
-var App = function() {
+module.exports = App;
+
+function App() {
   console.log('app initialized');
 };
-
-module.exports = App;
 
 App.prototype.beep = function() {
   console.log('boop');
