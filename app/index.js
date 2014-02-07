@@ -24,6 +24,13 @@ BrowserifyGenerator.prototype.askFor = function askFor() {
 
   var prompts = [{
     type: 'list',
+    name: 'buildSystem',
+    message: 'Which build system would you like to use?',
+    choices: ['Gulp', 'Grunt'],
+    filter: function(val) { return val.toLowerCase(); }
+  },
+  {
+    type: 'list',
     name: 'framework',
     message: 'Which front-end framework would you like to use?',
     choices: ['Foundation', 'Bootstrap'],
@@ -50,11 +57,15 @@ BrowserifyGenerator.prototype.askFor = function askFor() {
   ];
 
   this.prompt(prompts, function (props) {
-    function hasFeature(feat) { return props.framework.indexOf(feat) !== -1; }
-
+    function hasFeature(feat, item) { return item.indexOf(feat) !== -1; }
+    // console.log('props', props);
+    // console.log('buildSystem', props.buildSystem);
+    this.buildSystem = props.buildSystem;
+    this.gulp = hasFeature('gulp', props.buildSystem);  // Set boolean for buildSystem
+    this.grunt = hasFeature('grunt', props.buildSystem);  // Set boolean for buildSystem
     this.framework = props.framework;
-    this.foundation = hasFeature('foundation');  // Set boolean for framework
-    this.bootstrap = hasFeature('bootstrap');  // Set boolean for framework
+    this.foundation = hasFeature('foundation', props.framework);  // Set boolean for framework
+    this.bootstrap = hasFeature('bootstrap', props.framework);  // Set boolean for framework
     this.modernizr = props.modernizr;
     this.backbone = props.backbone;
     this.jade = props.jade;
@@ -65,8 +76,8 @@ BrowserifyGenerator.prototype.askFor = function askFor() {
 
 BrowserifyGenerator.prototype.followUp = function followUp() {
   var cb = this.async();
-  // If user is using foundation let them choose between using libsass and compass
-  if (this.foundation) {
+  // If user is using foundation and grunt let them choose between using libsass and compass
+  if (this.foundation && this.grunt) {
 
     var prompts = [{
       type: 'list',
@@ -86,16 +97,24 @@ BrowserifyGenerator.prototype.followUp = function followUp() {
 
       cb();
     }.bind(this));
-  } else {
+  } else if (this.bootstrap) {
     this.libsass = false;
+    this.compass = false;
+    cb();
+  } else {
+    this.libsass = true;
     this.compass = false;
     cb();
   }
   
 };
 
-BrowserifyGenerator.prototype.gruntfile = function gruntfile() {
-  this.template('Gruntfile.js', 'Gruntfile.js');
+BrowserifyGenerator.prototype.buildSystemfile = function buildSystemfile() {
+  if (this.grunt) {
+    this.template('Gruntfile.js');
+  } else {
+    this.template('gulpfile.js', 'gulpfile.js');
+  }
 };
 
 BrowserifyGenerator.prototype.packageJSON = function packageJSON() {
@@ -121,6 +140,7 @@ BrowserifyGenerator.prototype.editorConfig = function editorConfig() {
 };
 
 BrowserifyGenerator.prototype.app = function app() {
+  this.mkdir('dist');
   this.mkdir('app');
   this.mkdir('app/scripts');
   this.mkdir('app/images');

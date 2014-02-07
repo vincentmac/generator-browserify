@@ -190,7 +190,7 @@ module.exports = function(grunt) {
       },
       'dist-min': {
         options: {
-          outputStyle:'compressed',
+          outputStyle: 'compressed',
           includePaths: ['<%%= yeoman.app %>/scss', '<%%= yeoman.vendor %>/foundation/scss']
         },
         files: {
@@ -443,7 +443,7 @@ module.exports = function(grunt) {
             '.htaccess',
             'images/{,*/}*.webp',
             'styles/fonts/{,*/}*.*' <% if (bootstrap) { %> ,
-            'bower_components/sass-bootstrap/fonts/*.*' <% } %>
+            'bower_components/sass-bootstrap/fonts/*.*'<% } %>
           ]
         }]
       },
@@ -465,7 +465,7 @@ module.exports = function(grunt) {
         '!<%%= yeoman.dist %>/scripts/vendor/*'
       ],
       uglify: true
-    }, <% } %>
+    },<% } %>
     concurrent: {
       server: [<% if (compass) { %>
         'compass:server',<% } else if (libsass) { %>

@@ -41,6 +41,7 @@ describe('browserify generator', function () {
         ];
 
         helpers.mockPrompt(this.app, {
+            'buildSystem': ['grunt'],
             'framework': ['foundation'],
             'compiler': ['libsass'],
             'foundation': true,
@@ -50,7 +51,7 @@ describe('browserify generator', function () {
         });
         this.app.options['skip-install'] = true;
         this.app.run({}, function () {
-            helpers.assertFiles(expected);
+            helpers.assertFile(expected);
             done();
         });
     });
@@ -77,6 +78,7 @@ describe('browserify generator', function () {
         ];
 
         helpers.mockPrompt(this.app, {
+            'buildSystem': ['grunt'],
             'framework': ['foundation'],
             'compiler': ['libsass'],
             'foundation': true,
@@ -86,7 +88,7 @@ describe('browserify generator', function () {
         });
         this.app.options['skip-install'] = true;
         this.app.run({}, function () {
-            helpers.assertFiles(expected);
+            helpers.assertFile(expected);
             done();
         });
     });
@@ -113,6 +115,7 @@ describe('browserify generator', function () {
         ];
 
         helpers.mockPrompt(this.app, {
+            'buildSystem': ['grunt'],
             'framework': ['bootstrap'],
             'compiler': [''],
             'foundation': true,
@@ -123,7 +126,7 @@ describe('browserify generator', function () {
         });
         this.app.options['skip-install'] = true;
         this.app.run({}, function () {
-            helpers.assertFiles(expected);
+            helpers.assertFile(expected);
             done();
         });
     });
@@ -150,6 +153,7 @@ describe('browserify generator', function () {
         ];
 
         helpers.mockPrompt(this.app, {
+            'buildSystem': ['grunt'],
             'framework': ['bootstrap'],
             'compiler': [''],
             'foundation': true,
@@ -160,7 +164,45 @@ describe('browserify generator', function () {
         });
         this.app.options['skip-install'] = true;
         this.app.run({}, function () {
-            helpers.assertFiles(expected);
+            helpers.assertFile(expected);
+            done();
+        });
+    });
+
+    it('creates expected files for Gulp, Foundation, Jade', function (done) {
+        var expected = [
+            // add files you expect to exist here.
+            '.bowerrc',
+            '.editorconfig',
+            '.gitattributes',
+            '.gitignore',
+            '.jshintrc',
+            'bower.json',
+            'gulpfile.js',
+            'package.json',
+            'app/scripts/main.js',
+            'app/scripts/app.js',
+            'app/jade/index.jade',
+            'app/scss/app.scss',
+            'app/scss/_foundation.scss',
+            'app/scss/_variables.scss',
+            'app/scss/components/_base.scss'
+
+        ];
+
+        helpers.mockPrompt(this.app, {
+            'buildSystem': ['gulp'],
+            'framework': ['foundation'],
+            'compiler': [''],
+            'foundation': true,
+            'modernizr': true,
+            'jade': true,
+            'libsass': true,
+            'compass': false
+        });
+        this.app.options['skip-install'] = true;
+        this.app.run({}, function () {
+            helpers.assertFile(expected);
             done();
         });
     });
