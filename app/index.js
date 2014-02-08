@@ -159,7 +159,7 @@ BrowserifyGenerator.prototype.styles = function styles() {
     this.mkdir('app/scss/mixins');
     this.copy('scss/app.scss', 'app/scss/app.scss');
     this.copy('scss/_foundation.scss', 'app/scss/_foundation.scss');
-    this.copy('scss/_variables.scss', 'app/scss/_variables.scss');
+    this.copy('scss/_settings.scss', 'app/scss/_settings.scss');
     this.copy('scss/_base.scss', 'app/scss/components/_base.scss');
   } else if (this.bootstrap) {
     this.mkdir('app/less');

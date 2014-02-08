@@ -45,8 +45,8 @@
     "gulp-recess": "~0.2.0",<% } if (bootstrap) { %>
     "gulp-less": "~1.2.1",<% } %>
     "gulp-size": "~0.1.2",
-    "gulp-connect": "~0.1.6",<% } %>
-    "browserify": "~3.24.11",
+    "gulp-connect": "~0.3.1",<% } %>
+    "browserify": "~3.24.13",
     "debowerify": "~0.5.1",<% if (jade) { %>
     "browserify-jade": "~0.1.1",<% } %>
     "mocha": "~1.16.2",

@@ -6,10 +6,6 @@
 // Make sure the charset is set appropriately
 @charset "UTF-8";
 
-// This includes all of the foundation global elements that are needed to work with any of the other files.
-@import "variables";
-
-// 
 /* Foundation Components (comment out as necessary)
    ======================================================================== */
 @import
@@ -44,5 +40,7 @@
   "foundation/components/tabs",
   "foundation/components/thumbs",
   "foundation/components/tooltips",
+  "foundation/components/top-bar",
+  "foundation/components/type",
   "foundation/components/offcanvas",
   "foundation/components/visibility";

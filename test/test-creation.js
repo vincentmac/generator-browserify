@@ -35,7 +35,7 @@ describe('browserify generator', function () {
             'app/jade/index.jade',
             'app/scss/app.scss',
             'app/scss/_foundation.scss',
-            'app/scss/_variables.scss',
+            'app/scss/_settings.scss',
             'app/scss/components/_base.scss'
 
         ];
@@ -72,7 +72,7 @@ describe('browserify generator', function () {
             'app/index.html',
             'app/scss/app.scss',
             'app/scss/_foundation.scss',
-            'app/scss/_variables.scss',
+            'app/scss/_settings.scss',
             'app/scss/components/_base.scss'
 
         ];
@@ -185,7 +185,7 @@ describe('browserify generator', function () {
             'app/jade/index.jade',
             'app/scss/app.scss',
             'app/scss/_foundation.scss',
-            'app/scss/_variables.scss',
+            'app/scss/_settings.scss',
             'app/scss/components/_base.scss'
 
         ];

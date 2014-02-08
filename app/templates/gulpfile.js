@@ -17,7 +17,8 @@ gulp.task('styles', function () {<% if (foundation) { %>
     .pipe($.autoprefixer('last 1 version'))
     .pipe($.csso())
     .pipe(gulp.dest('dist/styles'))
-    .pipe($.size());<% } if (bootstrap) { %>
+    .pipe($.size());
+    .pipe($.connect.reload());<% } if (bootstrap) { %>
   return gulp.src('app/less/app.less')
     // Leaving out recess support due to string interpolation missing in less v1.3 (which recess is dependent on)
     // .pipe($.recess())  
@@ -133,7 +134,7 @@ gulp.task('watch', ['connect'], function () {
     gulp.watch('app/images/**/*', ['images']);
 
     <% if (jade) { %>// Watch .jade files
-    gulp.watch('app/jade/**/*.jade', ['jade']);<% } if (jade) { %>
+    gulp.watch('app/jade/**/*.jade', ['jade']);<% } else { %>
     // Watch .html files
     gulp.watch('app/**/*.html', ['html']);<% } %>
 });
