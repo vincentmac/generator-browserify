@@ -2,6 +2,7 @@
 // Generated on <%= (new Date).toISOString().split('T')[0] %> using <%= pkg.name %> <%= pkg.version %>
 
 var gulp = require('gulp');
+var bower = 'app/bower_components';
 
 // Load plugins
 var $ = require('gulp-load-plugins')();
@@ -17,7 +18,7 @@ gulp.task('styles', function () {<% if (foundation) { %>
     .pipe($.autoprefixer('last 1 version'))
     .pipe($.csso())
     .pipe(gulp.dest('dist/styles'))
-    .pipe($.size());
+    .pipe($.size())
     .pipe($.connect.reload());<% } if (bootstrap) { %>
   return gulp.src('app/less/app.less')
     // Leaving out recess support due to string interpolation missing in less v1.3 (which recess is dependent on)
@@ -29,7 +30,33 @@ gulp.task('styles', function () {<% if (foundation) { %>
     .pipe($.autoprefixer('last 1 version'))
     .pipe($.csso())
     .pipe(gulp.dest('dist/styles'))
-    .pipe($.size());<% } %>
+    .pipe($.size())
+    .pipe($.connect.reload());<% } %>
+});
+
+// Vendor
+gulp.task('vendor', function () {
+  return gulp.src([
+    bower + '/angular/angular.js',
+    bower + '/angular-route/angular-route.js',
+    bower + '/lodash/dist/lodash.js'
+    ])
+    .pipe($.browserify({
+      debug: true,
+      transform: [
+        'debowerify'
+      ],
+      shim: {
+        lodash: {
+          path: bower + '/lodash/dist/lodash.js',
+          exports: 'lodash'
+        }
+      }
+    }))
+    .pipe($.concat('vendor.js'))
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/scripts'))
+    .pipe($.size());
 });
 
 // Scripts
@@ -37,14 +64,20 @@ gulp.task('scripts', function () {
   return gulp.src('app/scripts/main.js')
     .pipe($.browserify({
       debug: true,
-      transform: [
-        'browserify-jade',
+      transform: [<% if (jade) { %>
+        'browserify-jade',<% } %>
         'debowerify'
-      ]
+      ],
+      // Note: At this time it seems that you will also have to 
+      // setup browserify-shims in package.json to correctly handle
+      // the exclusion of vendor vendor libraries from your bundle
+      external: ['lodash'],
+      extensions: ['.js']
     }))
     // .pipe($.uglify())
     .pipe(gulp.dest('dist/scripts'))
-    .pipe($.size());
+    .pipe($.size())
+    .pipe($.connect.reload());
 });
 
 <% if (jade) { %> // Jade
@@ -52,7 +85,8 @@ gulp.task('jade', function () {
   return gulp.src('app/jade/*.jade')
     .pipe($.jade())
     .pipe(gulp.dest('dist'))
-    .pipe($.size());
+    .pipe($.size())
+    .pipe($.connect.reload());
 });<% } else { %>// HTML
 gulp.task('html', function () {
   return gulp.src('app/*.html')
@@ -102,7 +136,7 @@ gulp.task('connect', $.connect.server({
   root: __dirname + '/dist',
   port: 9000,
   livereload:{
-    port: 35730
+    port: 35729
   },
   open: {
     file: 'index.html',

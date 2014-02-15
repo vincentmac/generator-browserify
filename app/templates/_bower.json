@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "dependencies": {<% if (bootstrap) { %>
     "bootstrap": ">=3.1.0",<% } if (foundation) { %>
-    "foundation": ">=5.1.0",<% } if (modernizr) { %>
+    "foundation": ">=5.1.1",<% } if (modernizr) { %>
     "modernizr": "~2.7.1",<% } %>
     "jquery": ">=2.1.0",
     "lodash": ">=2.4.1",

@@ -13,8 +13,8 @@ html(lang='en')
     // Bootstrap theme
     //- link(href='../../dist/css/bootstrap-theme.min.css', rel='stylesheet')
     // Custom styles for this template
-    link(rel='stylesheet', href='styles/app.css')
-    script(src='bower_components/modernizr/modernizr.js')
+    link(rel='stylesheet', href='styles/app.css')<% if (modernizr) { %>
+    script(src='bower_components/modernizr/modernizr.js')<% } %>
     // Just for debugging purposes. Don't actually copy this line!
     //if lt IE 9
       // script(src='../../docs-assets/js/ie8-responsive-file-warning.js')
