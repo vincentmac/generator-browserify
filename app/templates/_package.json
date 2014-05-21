@@ -1,6 +1,9 @@
 {
   "name": "<%= _.slugify(appname) %>",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "devDependencies": {<% if (grunt) { %>
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^0.7.3",
@@ -28,7 +31,6 @@
     "grunt-usemin": "^2.1.1",
     "load-grunt-tasks": "^0.4.0",
     "time-grunt": "^0.3.1",<% } if (gulp) { %>
-
     "gulp": "3.6.2",
     "gulp-autoprefixer": "^0.0.7",
     "gulp-cache": "^0.1.11",
@@ -51,19 +53,17 @@
     "connect-livereload": "^0.4.0",
     "opn": "^0.1.1",
     "vinyl-source-stream": "^0.1.1",<% } %>
-
-    "backbone": "^1.1.2",
     "browserify": "^4.1.5",<% if (jade) { %>
     "browserify-jade": "^0.1.1",<% } %>
     "browserify-shim": "^3.5.0",
     "debowerify": "^0.7.1",
-    "jquery": "^2.1.1",
-    "lodash": "^2.4.1",
     "mocha": "^1.19.0",
     "should": "^3.3.1",
     "jshint-stylish": "^0.2.0"
   },
-  "engines": {
-    "node": ">=0.10.0"
+  "dependencies": {
+    "backbone": "^1.1.2",
+    "jquery": "^2.1.1",
+    "lodash": "^2.4.1"
   }
 }
