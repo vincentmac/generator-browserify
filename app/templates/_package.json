@@ -2,68 +2,68 @@
   "name": "<%= _.slugify(appname) %>",
   "version": "0.0.0",
   "devDependencies": {<% if (grunt) { %>
-    "grunt": "~0.4.2",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-uglify": "~0.2.7",<% if (compass) { %>
-    "grunt-contrib-compass": "~0.7.0",<% }%>
-    "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-cssmin": "~0.7.0",
-    "grunt-contrib-connect": "~0.5.0",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-htmlmin": "~0.1.3",<% if (bootstrap) { %>
-    "grunt-contrib-less": "~0.8.3",<% } %>
-    "grunt-bower-install": "~0.8.0",<% if (jade) { %>
-    "grunt-contrib-jade": "~0.9.0",<% } %>
-    "grunt-contrib-imagemin": "~0.4.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-rev": "~0.1.0",
-    "grunt-autoprefixer": "~0.6.2",
-    "grunt-usemin": "~2.0.2",
-    "grunt-mocha": "~0.4.7",<% if (modernizr) { %>
-    "grunt-modernizr": "~0.4.1",<% } if (libsass) { %>
-    "grunt-sass": "~0.9.0",<% } %>
-    "grunt-svgmin": "~0.3.0",
-    "grunt-concurrent": "~0.4.2",
-    "load-grunt-tasks": "~0.2.1",
-    "time-grunt": "~0.2.5",
-    "grunt-browserify": "~1.3.0",<% } if (gulp) { %>
-    "gulp": "3.5.2",
-    "gulp-load-plugins": "~0.3.0",
-    "gulp-browserify": "~0.4.4",
-    "gulp-util": "~2.2.14",
-    "gulp-autoprefixer": "~0.0.6",
-    "gulp-csso": "~0.2.3",<% if (jade) { %>
-    "gulp-jade": "~0.4.1",<% } %>
-    "gulp-jshint": "~1.4.0",
-    "gulp-imagemin": "~0.1.5",
-    "gulp-clean": "~0.2.4",
-    "gulp-uglify": "~0.2.1",
-    "gulp-concat": "~2.1.7",
-    "gulp-cache": "~0.1.1",<% if (libsass) { %>
-    "gulp-sass": "~0.7.0",<% } if (false) { // disable recess for now%>
-    "gulp-recess": "~0.2.0",<% } if (bootstrap) { %>
-    "gulp-less": "~1.2.1",<% } %>
-    "gulp-size": "~0.1.3",
-    "gulp-connect": "~0.3.1",<% } %>
-    "browserify": "~3.29.0",
-    "debowerify": "~0.5.2",<% if (jade) { %>
-    "browserify-jade": "~0.1.1",<% } %>
-    "mocha": "~1.17.1",
-    "should": "~3.1.2",
-    "jshint-stylish": "~0.1.5",
-    "browserify-shim": "~3.2.2"
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^0.7.3",
+    "grunt-browserify": "^2.1.0",
+    "grunt-bower-install": "^1.6.0",
+    "grunt-concurrent": "^0.5.0",
+    "grunt-contrib-clean": "^0.5.0",<% if (compass) { %>
+    "grunt-contrib-compass": "^0.8.0",<% }%>
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-connect": "^0.7.1",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-cssmin": "^0.9.0",
+    "grunt-contrib-htmlmin": "^0.3.0",
+    "grunt-contrib-imagemin": "^0.7.0",<% if (jade) { %>
+    "grunt-contrib-jade": "^0.11.0",<% } %>
+    "grunt-contrib-jshint": "^0.10.0",<% if (bootstrap) { %>
+    "grunt-contrib-less": "^0.11.0",<% } %>
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha": "^0.4.10",<% if (modernizr) { %>
+    "grunt-modernizr": "^0.5.2",<% } %>
+    "grunt-rev": "^0.1.0",<% if (libsass) { %>
+    "grunt-sass": "^0.12.1",<% } %>
+    "grunt-svgmin": "^0.4.0",
+    "grunt-usemin": "^2.1.1",
+    "load-grunt-tasks": "^0.4.0",
+    "time-grunt": "^0.3.1",<% } if (gulp) { %>
+
+    "gulp": "3.6.2",
+    "gulp-autoprefixer": "^0.0.7",
+    "gulp-cache": "^0.1.11",
+    "gulp-changed": "^0.3.0",
+    "gulp-clean": "^0.2.4",
+    "gulp-concat": "^2.2.0",
+    "gulp-csso": "^0.2.8",
+    "gulp-imagemin": "^0.5.0",<% if (jade) { %>
+    "gulp-jade": "^0.5.0",<% } %>
+    "gulp-jshint": "^1.6.1",<% if (bootstrap) { %>
+    "gulp-less": "^1.2.3",<% } %>
+    "gulp-livereload": "^1.5.0",
+    "gulp-load-plugins": "^0.5.1",<% if (false) { // disable recess for now%>
+    "gulp-recess": "^0.3.1",<% } if (libsass) { %>
+    "gulp-sass": "^0.7.1",<% } %>
+    "gulp-size": "^0.3.1",
+    "gulp-uglify": "^0.3.0",
+    "gulp-util": "^2.2.14",
+    "connect": "^2.16.2",
+    "connect-livereload": "^0.4.0",
+    "opn": "^0.1.1",
+    "vinyl-source-stream": "^0.1.1",<% } %>
+
+    "backbone": "^1.1.2",
+    "browserify": "^4.1.5",<% if (jade) { %>
+    "browserify-jade": "^0.1.1",<% } %>
+    "browserify-shim": "^3.5.0",
+    "debowerify": "^0.7.1",
+    "jquery": "^2.1.1",
+    "lodash": "^2.4.1",
+    "mocha": "^1.19.0",
+    "should": "^3.3.1",
+    "jshint-stylish": "^0.2.0"
   },
   "engines": {
     "node": ">=0.10.0"
-  },
-  "browserify": {
-    "transform": ["browserify-shim"]
-  },
-  "browser": {
-    "lodash": "./app/bower_components/lodash/dist/lodash.js"
-  },
-  "browserify-shim": {
-    "lodash": "global:lodash"
   }
 }

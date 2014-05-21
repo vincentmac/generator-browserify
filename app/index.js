@@ -106,7 +106,7 @@ BrowserifyGenerator.prototype.followUp = function followUp() {
     this.compass = false;
     cb();
   }
-  
+
 };
 
 BrowserifyGenerator.prototype.buildSystemfile = function buildSystemfile() {
@@ -114,6 +114,28 @@ BrowserifyGenerator.prototype.buildSystemfile = function buildSystemfile() {
     this.template('Gruntfile.js');
   } else {
     this.template('gulpfile.js', 'gulpfile.js');
+    this.mkdir('gulp');
+    this.copy('gulp/index.js', 'gulp/index.js');
+    this.copy('gulp/config.js', 'gulp/config.js');
+    // this.copy('gulp/config.js', 'gulp/config.js');
+    this.mkdir('gulp/util');
+    this.copy('gulp/util/scriptFilter.js', 'gulp/util/scriptFilter.js');
+
+    this.mkdir('gulp/tasks');
+    this.copy('gulp/tasks/browserify.js', 'gulp/tasks/browserify.js');
+    this.template('gulp/tasks/build.js', 'gulp/tasks/build.js');
+    this.copy('gulp/tasks/clean.js', 'gulp/tasks/clean.js');
+    this.copy('gulp/tasks/default.js', 'gulp/tasks/default.js');
+    this.copy('gulp/tasks/dev.js', 'gulp/tasks/dev.js');
+    if (!this.jade) this.copy('gulp/tasks/html.js', 'gulp/tasks/html.js');
+    this.copy('gulp/tasks/images.js', 'gulp/tasks/images.js');
+    if (this.jade) this.copy('gulp/tasks/jade.js', 'gulp/tasks/jade.js');
+    this.copy('gulp/tasks/jshint.js', 'gulp/tasks/jshint.js');
+    if (this.bootstrap) this.copy('gulp/tasks/less.js', 'gulp/tasks/less.js');
+    if (this.libsass) this.copy('gulp/tasks/sass.js', 'gulp/tasks/sass.js');
+    this.copy('gulp/tasks/serve.js', 'gulp/tasks/serve.js');
+    this.template('gulp/tasks/watch.js', 'gulp/tasks/watch.js');
+
   }
 };
 
@@ -188,5 +210,3 @@ BrowserifyGenerator.prototype.index = function index() {
     }
   }
 };
-
-

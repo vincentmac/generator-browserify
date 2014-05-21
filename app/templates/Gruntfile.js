@@ -20,7 +20,8 @@ module.exports = function(grunt) {
     yeoman: {
       app: 'app',
       dist: 'dist',
-      vendor: '<%%= bowerrc.directory %>'
+      vendor: '<%%= bowerrc.directory %>',
+      node: 'node_modules'
     },
     banner: '/*!\n' +
             ' * <%%= pkg.name %>-<%%= pkg.version %>\n' +
@@ -228,37 +229,15 @@ module.exports = function(grunt) {
     },<% } %>
     browserify: {
       vendor: {
-        src: [
-          '<%%= yeoman.vendor %>/jquery/jquery.js',
-          '<%%= yeoman.vendor %>/lodash/dist/lodash.js',
-          '<%%= yeoman.vendor %>/backbone/backbone.js'
-        ],
+        src: [],
         dest: '.tmp/scripts/vendor.js',
         options: {
           debug: true,
-          shim: {
-            jquery: {
-              path: '<%%= yeoman.vendor %>/jquery/jquery.js',
-              exports: '$'
-            },
-            lodash: {
-              path: '<%%= yeoman.vendor %>/lodash/dist/lodash.js',
-              exports: '_'
-            },
-            backbone: {
-              path: '<%%= yeoman.vendor %>/backbone/backbone.js',
-              exports: 'Backbone',
-              depends: {
-                jquery: '$',
-                lodash: '_'
-              }
-            }
-          },
+          require: ['jquery', 'lodash', 'backbone'],
+
           alias: [
-            '<%%= yeoman.vendor %>/lodash/dist/lodash.js:underscore',
-            '<%%= yeoman.vendor %>/backbone/backbone.js:backbone'
-          ],
-          transform: ['debowerify']
+            'lodash:underscore'
+          ]
         }
       },
       dev: {
