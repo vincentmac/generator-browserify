@@ -1,6 +1,6 @@
 'use strict';
 
-var config = requir('../config');
+var config = require('../config');
 var gulp = require('gulp');
 var size = require('gulp-size');
 
