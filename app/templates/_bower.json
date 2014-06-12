@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "dependencies": {<% if (bootstrap) { %>
     "bootstrap": ">=3.1.1",<% } if (foundation) { %>
-    "foundation": ">=5.2.2",<% } if (modernizr) { %>
+    "foundation": ">=5.2.3",<% } if (modernizr) { %>
     "modernizr": "~2.8.2"<% } %>
   }
 }

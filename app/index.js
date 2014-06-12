@@ -126,7 +126,8 @@ BrowserifyGenerator.prototype.buildSystemfile = function buildSystemfile() {
     this.template('gulp/tasks/build.js', 'gulp/tasks/build.js');
     this.copy('gulp/tasks/clean.js', 'gulp/tasks/clean.js');
     this.copy('gulp/tasks/default.js', 'gulp/tasks/default.js');
-    this.copy('gulp/tasks/dev.js', 'gulp/tasks/dev.js');
+    this.template('gulp/tasks/dev.js', 'gulp/tasks/dev.js');
+    this.template('gulp/tasks/dist.js', 'gulp/tasks/dist.js');
     if (!this.jade) this.copy('gulp/tasks/html.js', 'gulp/tasks/html.js');
     this.copy('gulp/tasks/images.js', 'gulp/tasks/images.js');
     if (this.jade) this.copy('gulp/tasks/jade.js', 'gulp/tasks/jade.js');

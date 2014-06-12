@@ -2,8 +2,9 @@
 
 var config = require('../config');
 var gulp = require('gulp');
-var csso = require('gulp-csso');
 // var prefix = require('gulp-autoprefixer');
+var csso = require('gulp-csso');
+var fingerprint = require('gulp-fingerprint');
 var sass = require('gulp-sass');
 var size = require('gulp-size');
 
@@ -17,20 +18,20 @@ gulp.task('styles', function () {
       sourceComments: 'map'
     }))
     // .pipe(prefix('last 1 version'))  // add vendor prefixes if necessary
-    // .pipe(csso())  // minify css
     .pipe(gulp.dest(config.dist + '/styles'))
     .pipe(size());
 });
 
 // Styles Dist
 gulp.task('stylesDist', function () {
+  var manifest = require('../../dist/image-manifest');
   // See https://github.com/andrew/node-sass for more options
   return gulp.src('app/scss/app.scss')
     .pipe(sass({
-      // outputStyle: 'compressed',
       includePaths: [config.bower + '/foundation/scss']
     }))
     // .pipe(prefix('last 1 version'))  // add vendor prefixes if necessary
+    .pipe(fingerprint(manifest, {verbose: true}))
     .pipe(csso())  // minify css
     .pipe(gulp.dest(config.dist + '/styles'))
     .pipe(size());
