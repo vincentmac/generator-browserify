@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var rev = require('gulp-rev');
 
 // Build
-gulp.task('dist', [<% if (jade) { %>'jade'<% } if (!jade) { %>'html'<% } %>, 'imagesDist', 'stylesDist', 'vendor', 'browserify'], function() {
+gulp.task('dist', [<% if (jade) { %>'jade'<% } if (!jade) { %>'html'<% } %>, 'images:dist', 'styles:dist', 'vendor', 'browserify'], function() {
   return gulp.src(['.tmp/styles/*.css', '.tmp/scripts/*.js'], {base: '.tmp'})
     .pipe(gulp.dest('dist'))
     .pipe(rev())

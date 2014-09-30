@@ -23,7 +23,7 @@ gulp.task('styles', function () {
 });
 
 // Styles Dist
-gulp.task('stylesDist', function () {
+gulp.task('styles:dist', function () {
   var manifest = require('../../dist/image-manifest');
   // See https://github.com/andrew/node-sass for more options
   return gulp.src('app/scss/app.scss')

@@ -22,7 +22,7 @@ gulp.task('images', function() {
 
 
 // Images Dist
-gulp.task('imagesDist', ['images'], function () {
+gulp.task('images:dist', ['images'], function () {
   return gulp.src(['app/images/**/*'], {base: path.resolve('app')})
     // Commenting out the cache section for now.
     // .pipe(gulp.dest('dist'))

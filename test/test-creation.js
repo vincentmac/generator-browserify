@@ -1,8 +1,10 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
+var fs = require('fs');
 var path    = require('path');
 var helpers = require('yeoman-generator').test;
+var assert = require('yeoman-generator').assert;
 
 
 describe('browserify generator', function () {
@@ -51,7 +53,26 @@ describe('browserify generator', function () {
         });
         this.app.options['skip-install'] = true;
         this.app.run({}, function () {
-            helpers.assertFile(expected);
+            assert.file(expected);
+
+            // read bower.json Files
+            var bowerJson = fs.readFileSync('bower.json', 'utf8');
+            var bowerDeps = JSON.parse(bowerJson).dependencies;
+
+            assert.ok(bowerDeps.foundation);
+            assert.ok(bowerDeps.modernizr);
+
+            // read package.json
+            var packageJson = fs.readFileSync('package.json', 'utf8');
+            var packageDeps = JSON.parse(packageJson).dependencies;
+            var packageDevDeps = JSON.parse(packageJson).devDependencies;
+
+            assert.ok(packageDeps.backbone);
+            assert.ok(packageDeps.jquery);
+            assert.ok(packageDeps.lodash);
+            assert.ok(packageDevDeps.grunt);
+            assert.ok(packageDevDeps['browserify-jade']);
+
             done();
         });
     });
@@ -88,7 +109,26 @@ describe('browserify generator', function () {
         });
         this.app.options['skip-install'] = true;
         this.app.run({}, function () {
-            helpers.assertFile(expected);
+            assert.file(expected);
+
+            // read bower.json Files
+            var bowerJson = fs.readFileSync('bower.json', 'utf8');
+            var bowerDeps = JSON.parse(bowerJson).dependencies;
+
+            assert.ok(bowerDeps.foundation);
+            assert.ok(bowerDeps.modernizr);
+
+            // read package.json
+            var packageJson = fs.readFileSync('package.json', 'utf8');
+            var packageDeps = JSON.parse(packageJson).dependencies;
+            var packageDevDeps = JSON.parse(packageJson).devDependencies;
+
+            assert.ok(packageDeps.backbone);
+            assert.ok(packageDeps.jquery);
+            assert.ok(packageDeps.lodash);
+            assert.ok(packageDevDeps.grunt);
+            assert.ok(!packageDevDeps['browserify-jade']);
+
             done();
         });
     });
@@ -126,7 +166,26 @@ describe('browserify generator', function () {
         });
         this.app.options['skip-install'] = true;
         this.app.run({}, function () {
-            helpers.assertFile(expected);
+            assert.file(expected);
+
+            // read bower.json Files
+            var bowerJson = fs.readFileSync('bower.json', 'utf8');
+            var bowerDeps = JSON.parse(bowerJson).dependencies;
+
+            assert.ok(bowerDeps.bootstrap);
+            assert.ok(bowerDeps.modernizr);
+
+            // read package.json
+            var packageJson = fs.readFileSync('package.json', 'utf8');
+            var packageDeps = JSON.parse(packageJson).dependencies;
+            var packageDevDeps = JSON.parse(packageJson).devDependencies;
+
+            assert.ok(packageDeps.backbone);
+            assert.ok(packageDeps.jquery);
+            assert.ok(packageDeps.lodash);
+            assert.ok(packageDevDeps.grunt);
+            assert.ok(packageDevDeps['browserify-jade']);
+
             done();
         });
     });
@@ -156,7 +215,7 @@ describe('browserify generator', function () {
             'buildSystem': ['grunt'],
             'framework': ['bootstrap'],
             'compiler': [''],
-            'foundation': true,
+            'foundation': false,
             'modernizr': true,
             'jade': false,
             'libsass': false,
@@ -164,7 +223,26 @@ describe('browserify generator', function () {
         });
         this.app.options['skip-install'] = true;
         this.app.run({}, function () {
-            helpers.assertFile(expected);
+            assert.file(expected);
+
+            // read bower.json
+            var bowerJson = fs.readFileSync('bower.json', 'utf8');
+            var bowerDeps = JSON.parse(bowerJson).dependencies;
+
+            assert.ok(bowerDeps.bootstrap);
+            assert.ok(bowerDeps.modernizr);
+
+            // read package.json
+            var packageJson = fs.readFileSync('package.json', 'utf8');
+            var packageDeps = JSON.parse(packageJson).dependencies;
+            var packageDevDeps = JSON.parse(packageJson).devDependencies;
+
+            assert.ok(packageDeps.backbone);
+            assert.ok(packageDeps.jquery);
+            assert.ok(packageDeps.lodash);
+            assert.ok(packageDevDeps.grunt);
+            assert.ok(!packageDevDeps['browserify-jade']);
+
             done();
         });
     });
@@ -202,7 +280,27 @@ describe('browserify generator', function () {
         });
         this.app.options['skip-install'] = true;
         this.app.run({}, function () {
-            helpers.assertFile(expected);
+            assert.file(expected);
+
+            // read bower.json
+            var bowerJson = fs.readFileSync('bower.json', 'utf8');
+            var bowerDeps = JSON.parse(bowerJson).dependencies;
+
+            assert.ok(bowerDeps.foundation);
+            assert.ok(bowerDeps.modernizr);
+
+            // read package.json
+            var packageJson = fs.readFileSync('package.json', 'utf8');
+            var packageDeps = JSON.parse(packageJson).dependencies;
+            var packageDevDeps = JSON.parse(packageJson).devDependencies;
+
+            assert.ok(packageDeps.backbone);
+            assert.ok(packageDeps.jquery);
+            assert.ok(packageDeps.lodash);
+            assert.ok(!packageDevDeps.grunt);
+            assert.ok(packageDevDeps.gulp);
+            assert.ok(packageDevDeps['browserify-jade']);
+
             done();
         });
     });

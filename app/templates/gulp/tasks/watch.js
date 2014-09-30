@@ -29,6 +29,8 @@ gulp.task('watch', ['connect', 'serve'], function () {
     // Watch image files
     gulp.watch('app/images/**/*', ['images']);
 
+    <% if (jade) { %>// Watch .jade files
     // Watch .jade files
-    gulp.watch('app/jade/**/*.jade', ['jade']);
+    gulp.watch('app/jade/**/*.jade', ['jade']);<% } if (!jade) { %>// Watch .html files
++    gulp.watch('app/**/*.html', ['html']);<% } %>
 });

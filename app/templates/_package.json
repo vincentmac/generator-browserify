@@ -4,8 +4,9 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "scripts": {
-    "dist": "NODE_ENV=production gulp dist"
+  "scripts": {<% if (gulp) { %>
+    "dist": "NODE_ENV=production gulp dist"<% } if (grunt) { %>
+    "dist": "NODE_ENV=production grunt dist"<% } %>
   },
   "devDependencies": {<% if (grunt) { %>
     "grunt": "^0.4.5",
@@ -34,40 +35,40 @@
     "grunt-usemin": "^2.1.1",
     "load-grunt-tasks": "^0.4.0",
     "time-grunt": "^0.3.1",<% } if (gulp) { %>
-    "gulp": "3.6.2",
-    "gulp-autoprefixer": "^0.0.7",
-    "gulp-cache": "^0.1.11",
-    "gulp-changed": "^0.3.0",
-    "gulp-clean": "^0.2.4",
-    "gulp-concat": "^2.2.0",
-    "gulp-csso": "^0.2.8",
-    "gulp-debug": "^0.3.0",
-    "gulp-fingerprint": "^0.1.0",
-    "gulp-imagemin": "^0.5.0",<% if (jade) { %>
-    "gulp-jade": "^0.5.0",<% } %>
-    "gulp-jshint": "^1.6.1",<% if (bootstrap) { %>
-    "gulp-less": "^1.2.3",<% } %>
-    "gulp-livereload": "^1.5.0",
-    "gulp-load-plugins": "^0.5.1",<% if (false) { // disable recess for now%>
+    "gulp": "3.8.7",
+    "gulp-autoprefixer": "^0.0.10",
+    "gulp-cache": "^0.2.2",
+    "gulp-changed": "^1.0.0",
+    "gulp-concat": "^2.3.5",
+    "gulp-csso": "^0.2.9",
+    "gulp-debug": "^1.0.1",
+    "gulp-fingerprint": "^0.3.2",
+    "gulp-imagemin": "^1.0.1",<% if (jade) { %>
+    "gulp-jade": "^0.7.0",<% } %>
+    "gulp-jshint": "^1.8.4",<% if (bootstrap) { %>
+    "gulp-less": "^1.3.5",<% } %>
+    "gulp-livereload": "^2.1.1",
+    "gulp-load-plugins": "^0.6.0",<% if (false) { // disable recess for now%>
     "gulp-recess": "^0.3.1",<% } %>
     "gulp-rename": "^1.2.0",
-    "gulp-rev": "^0.4.0",<% if (libsass) { %>
+    "gulp-rev": "^1.1.0",
+    "gulp-rimraf": "^0.1.0",<% if (libsass) { %>
     "gulp-sass": "0.7.1",<% } %>
-    "gulp-size": "^0.3.1",
-    "gulp-uglify": "^0.3.0",
-    "gulp-util": "^2.2.14",
-    "connect": "^2.16.2",
+    "gulp-size": "^1.1.0",
+    "gulp-uglify": "^1.0.1",
+    "gulp-util": "^3.0.1",
+    "connect": "^2.25.9",
     "connect-livereload": "^0.4.0",
     "partialify": "^3.1.1",
-    "opn": "^0.1.1",
+    "opn": "^1.0.0",
     "vinyl-source-stream": "^0.1.1",<% } %>
-    "browserify": "^4.1.5",<% if (jade) { %>
+    "browserify": "^5.12.1",<% if (jade) { %>
     "browserify-jade": "^0.1.1",<% } %>
-    "browserify-shim": "^3.5.0",
-    "debowerify": "^0.7.1",
-    "mocha": "^1.19.0",
-    "should": "^3.3.1",
-    "jshint-stylish": "^0.2.0"
+    "browserify-shim": "^3.7.0",
+    "debowerify": "^0.8.1",
+    "mocha": "^1.21.4",
+    "should": "^4.0.4",
+    "jshint-stylish": "^0.4.0"
   },
   "dependencies": {
     "backbone": "^1.1.2",

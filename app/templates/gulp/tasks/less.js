@@ -23,7 +23,7 @@ gulp.task('styles', function () {
 
 
 // Styles Dist
-gulp.task('stylesDist', function () {
+gulp.task('styles:dist', function () {
   var manifest = require('../../dist/image-manifest');
   return gulp.src('app/less/app.less')
     // Leaving out recess support due to string interpolation missing in less v1.3 (which recess is dependent on)
