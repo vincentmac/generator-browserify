@@ -32,5 +32,5 @@ gulp.task('watch', ['connect', 'serve'], function () {
     <% if (jade) { %>// Watch .jade files
     // Watch .jade files
     gulp.watch('app/jade/**/*.jade', ['jade']);<% } if (!jade) { %>// Watch .html files
-+    gulp.watch('app/**/*.html', ['html']);<% } %>
+    gulp.watch('app/**/*.html', ['html']);<% } %>
 });
